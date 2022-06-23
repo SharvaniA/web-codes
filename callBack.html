@@ -1,0 +1,209 @@
+<html>
+
+	<body> Demonstrating callback in javascript:</br>
+    	<script type="text/javascript">
+            function i_take_10_sec(callback) {
+                return setTimeout(() => {
+                    document.write('I was no: 1 and I take 10 seconds</br>')
+                    callback()
+                }, 10000);
+            }
+
+            function i_take_1_sec(callback) {
+                return setTimeout(() => {
+                    document.write('I was no: 2 and I take 1 second</br>')
+                    callback()
+                }, 1000);
+            }
+
+            function i_take_5_sec(callback) {
+                return setTimeout(() => {
+                    document.write('I was no: 3 and I take 5 second</br>')
+                    callback()
+                }, 5000);
+            }
+
+            function i_take_7_sec(callback) {
+                return setTimeout(() => {
+                    document.write('I was no: 4 and I take 7 second</br>')
+                    callback()
+                }, 7000);
+            }
+
+            function run ()
+            {
+                i_take_10_sec(function ()
+                {
+                    i_take_1_sec(()=>
+                    {
+                        i_take_5_sec(()=>
+                        {
+                            i_take_7_sec(()=>{ })
+                        })
+                    })
+                })
+            }
+            run();
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+ 
+    <body>
+        Demonstrating callback function in javascript. </br>
+        <script type="text/javascript">
+            function multiply(a, b, callback)
+            {
+                var result = a * b;
+                callback(result);
+            }
+ 
+            function ouput(sum)
+            {
+                console.log("I am in output function");
+                console.log("Multiplication of the provided inputs are: " + sum);
+            }
+ 
+            function display(sum)
+            {
+                console.log("I am in display function");
+                console.log("Multiplication of the provided inputs are: " + sum);
+            }
+ 
+            multiply(5, 6, ouput); // output is passed as callback
+            multiply(7, 6, display); // display is passed as callback
+        </script>
+    </body>
+ 
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+
+<body> Demonstrating callback in javascript:</br>
+    
+    
+    <script type="text/javascript">
+        function first(callback){
+
+            // Simulate a code delay
+            setTimeout( function(){
+                console.log("Inside function: first");
+                callback();
+             }, 1500 );
+            
+        }
+        
+        function second(){
+            const outPutElem = document.createElement("div");
+                console.log("Inside function: second"); 
+        }
+
+        first(second); // Invoke only first() function, it will auto-invoke second()
+
+    </script>
+</body>
+
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+
+<body> Demonstrating function calll with async in javascript:</br>
+    
+    
+    <script type="text/javascript">
+        function first(){
+
+            // Simulate a code delay
+            setTimeout( function(){
+                console.log("Inside function: first");
+             }, 1500 );
+            
+        };
+        
+        function second(){
+            console.log("Inside function: second"); 
+        };
+
+        first();
+        second();
+
+    </script>
+</body>
+
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Call Back</title>
+	<script type="text/javascript">
+		
+	function greeting(name) {
+	  alert('Hello ' + name);
+	}
+
+	function processUserInput(callback) {
+	  var name = prompt('Please enter your name.');
+	  callback(name);
+	}
+
+	processUserInput(greeting);
+	</script>
+</head>
+<body>
+
+</body>
+</html> -->

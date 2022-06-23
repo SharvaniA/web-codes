@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HTML Audio Player</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready( function() 
+		{
+			$('#loadHere').load("audioList.php");
+		});
+	</script>
+</head>
+<body>
+	<audio src="" controls autoplay id="audioPlayer">
+	</audio>
+	<!-- <ul id="playList"><li><a href="sampleAudio.MP3">Samples0</a></li></ul>
+	<ul id="playList"><li><a href="sample1.MP3">Samples1</a></li></ul>
+	<ul id="playList"><li><a href="sample2.MP3">Samples2</a></li></ul>
+	<ul id="playList"><li><a href="sample3.MP3">Samples3</a></li></ul>
+	<ul id="playList"><li><a href="sample4.MP3">Samples4</a></li></ul> -->
+	<ul id="loadHere">
+	</ul>
+	<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+	<script type="text/javascript">
+		audioPlayer();
+		function audioPlayer()
+		{
+			$("#audioPlayer")[0].src = $("#playList li a")[0];
+			$("#audioPlayer")[0].play();
+			$("#playList li a").click(function(e)
+			{
+				e.preventDefault();
+				$("#audioPlayer")[0].src = this;
+			})
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Get Directory</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){
+$("#file-input").on("change", function(e){
+  var thefiles = e.target.files;
+  $.each(thefiles, function(i, item){
+    var thefile = item;
+    $("#thelist").append("FILES: " + thefile.name + "<br />");;
+  });
+});
+});
+</script>
+</head>
+<body>
+<input type="file" id="file-input" webkitdirectory="" directory="">
+<div id="thelist"></div>
+</body>
+</html>

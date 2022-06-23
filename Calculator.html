@@ -1,0 +1,252 @@
+<html>
+	<head>
+		<title>Calculator</title>
+		<link rel="stylesheet" type="text/css" href="Calculator.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+		</script>
+	</head>
+	<body>
+		<input type="text" name="txtResult" id="txtResult"><br>
+		<script type="text/javascript">
+		const keys = [0, 1, 2, '+', 3, 4, 5, '-', 6, 7, 8, '*', 9, '/', '=', 'C'];
+		for (let keysCounter = 0; keysCounter < 16; keysCounter++)
+		{
+			let buttonKeys = document.createElement("button");
+			buttonKeys.innerHTML = keys[keysCounter];
+			$(buttonKeys).click(function()
+			{
+				if (keys[keysCounter] == '=') 
+				{
+					$("#txtResult").val(eval($("#txtResult").val()));
+				}
+				else if (keys[keysCounter] == 'C') 
+				{
+					$("#txtResult").val("");
+				}
+				else
+				{
+					$("#txtResult").val($("#txtResult").val() + keys[keysCounter]);
+				}
+			});		
+			document.body.appendChild(buttonKeys);
+			if (((keysCounter+1)%4) == 0) 
+			{
+				document.body.appendChild(document.createElement("br"));
+			}
+		}
+		</script>
+		<script type="text/javascript"></script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Calculator Final -->
+
+<!-- <html>
+	<head>
+		<title>Calculator</title>
+		<link rel="stylesheet" type="text/css" href="Calculator.css">
+	</head>
+	<body>
+		<input type="text" name="txtResult" id="txtResult"><br>
+		<script type="text/javascript">
+		const keys = [0, 1, 2, '+', 3, 4, 5, '-', 6, 7, 8, '*', 9, '/', '=', 'C'];
+		for (let keysCounter = 0; keysCounter < 16; keysCounter++)
+		{
+			let buttonKeys = document.createElement("button");
+			buttonKeys.innerHTML = keys[keysCounter];
+			buttonKeys.onclick = function()
+			{
+				if (keys[keysCounter] == '=') 
+				{
+					document.getElementById("txtResult").value = eval(document.getElementById("txtResult").value);
+				}
+				else if (keys[keysCounter] == 'C') 
+				{
+					document.getElementById("txtResult").value = "";
+				}
+				else
+				{
+					document.getElementById("txtResult").value += keys[keysCounter];
+				}
+			};		
+			document.body.appendChild(buttonKeys);
+			if (((keysCounter+1)%4) == 0) 
+			{
+				document.body.appendChild(document.createElement("br"));
+			}
+		}
+		</script>
+	</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+	<head>
+		<title>Calculator</title>
+		<link rel="stylesheet" type="text/css" href="calci.css">
+		<script src="calci.js"></script>
+	</head>
+	<body>
+		<input type="text" name="textArea" id="textArea"><br>
+		<script type="text/javascript">
+		const numb = [0, 1, 2, '+', 3, 4, 5, '-', 6, 7, 8, '*', 9, '/', '=', 'C'];
+		for (let i = 0; i < 16; i++)
+		{
+			let btn = document.createElement("button");
+			btn.innerHTML = numb[i];
+			if (numb[i] == '=') 
+			{
+				btn.onclick = function()
+				{
+					document.getElementById("textArea").value = eval(document.getElementById("textArea").value);
+	 
+				};
+			}
+			else
+			{
+				if (numb[i] == 'C')
+				{
+					btn.onclick = function()
+					{
+						document.getElementById("textArea").value = "";
+					};
+				}
+				else
+				{
+					btn.onclick = function()
+					{
+						document.getElementById("textArea").value = document.getElementById("textArea").value + numb[i];
+					};
+				}
+			}
+			document.body.appendChild(btn);
+			if (((i+1)%4) == 0) 
+			{
+				document.body.appendChild(document.createElement("br"));
+			}
+		}
+		</script>
+	</body>
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html> -->
+<!-- <html>
+	<head>
+		<title>Calculator</title>
+		<link rel="stylesheet" type="text/css" href="calci.css">
+		<script src="calci.js"></script>
+	</head>
+	<body>
+		<input type="text" name="textArea" id="textArea"><br>
+		<button onclick="sendNum('0')">0</button>
+		<button onclick="sendNum('1')">1</button>
+		<button onclick="sendNum('2')">2</button>
+		<button onclick="sendNum('+')">+</button><br>
+		<button onclick="sendNum('3')">3</button>
+		<button onclick="sendNum('4')">4</button>
+		<button onclick="sendNum('5')">5</button>
+		<button onclick="sendNum('-')">-</button><br>
+		<button onclick="sendNum('6')">6</button>
+		<button onclick="sendNum('7')">7</button>
+		<button onclick="sendNum('8')">8</button>
+		<button onclick="sendNum('*')">X</button><br>
+		<button onclick="sendNum('9')">9</button>
+		<button onclick="equalTo()">=</button>
+		<button onclick="clearScr()">C</button>
+		<button onclick="sendNum('/')">/</button>
+	</body>
+</html> -->

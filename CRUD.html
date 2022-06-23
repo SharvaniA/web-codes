@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CRUD</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script type="text/javascript">
+    	$(document).ready( function() {
+            $('#loadHere').load("displayAll.php"); 
+	                $('#loadHere1').hide();
+    		$('#save').click(function(){
+                $('#loadHere1').load('save.php?accountNumber=' + $("#accountNumber").val() + '&name=' + $("#name").val() + '&balance=' + $("#balance").val()); 
+	            $('#loadHere').load("displayAll.php"); 
+            	})
+        	}); 
+    </script>
+</head>
+<body>
+	Account Number:
+	<input type="text" name="accountNumber" id="accountNumber"><br>
+	Name:
+	<input type="text" name="name" id="name"><br>
+	Balance:
+	<input type="text" name="balance" id="balance"><br>
+	<button name="save" id="save"><span class="glyphicon glyphicon-download-alt">SAVE</span></button>
+	<p id="loadHere"></p>
+	<p id="loadHere1"></p>
+</body>
+</html>
