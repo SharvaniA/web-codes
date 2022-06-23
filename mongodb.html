@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DISPLAY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script type="text/javascript">
+        $(document).ready( function(){
+            $('#display').click(function(){
+                $('#loadHere').load('http://localhost/display');
+            });
+            $('#insertButton').click(function(){
+                $('#loadHere1').load('http://localhost/insert?accountNumber=' + $("#insertAccountNumber").val() + "&name=" + $("#insertName").val() + "&balance=" + $("#insertBalance").val());
+            });
+            $('#updateButton').click(function(){
+                $('#loadHere2').load('http://localhost/update?accountNumber=' + $("#updateAccountNumber").val() + "&name=" + $("#updateName").val() + "&balance=" + $("#updateBalance").val());
+            });
+            $('#deleteButton').click(function(){
+                $('#loadHere3').load('http://localhost/delete?accountNumber=' + $("#deleteAccountNumber").val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="display">Display</button>
+    <p id="loadHere"></p>
+
+    Account Number:
+    <input type="text" name="insert" id="insertAccountNumber"><br>
+    Name:
+    <input type="text" name="insert" id="insertName"><br>
+    Balance:
+    <input type="text" name="insert" id="insertBalance"><br>
+    <button id="insertButton"><span class="glyphicon glyphicon-download-alt">INSERT</span></button><br>
+
+    Account Number:
+    <input type="text" name="update" id="updateAccountNumber"><br>
+    Name:
+    <input type="text" name="update" id="updateName"><br>
+    Balance:
+    <input type="text" name="update" id="updateBalance"><br>
+    <button id="updateButton"><span class="glyphicon glyphicon-download-alt">UPDATE</span></button><br>
+
+    Account Number:
+    <input type="text" name="delete" id="deleteAccountNumber"><br>
+    <button id="deleteButton"><span class='glyphicon glyphicon-search'>DELETE</span></button>
+    <p id="loadHere1"></p>
+    <p id="loadHere2"></p>
+    <p id="loadHere3"></p>
+</body>
+</html>

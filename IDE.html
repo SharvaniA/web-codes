@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IDE</title>
+	<style type="text/css">
+		#div1,#webPage,#div3
+		{
+			height: 800px;
+			width: 31%;
+			border: 2px solid;
+			padding: 10px;
+			float: left;
+		}
+		#div2
+		{
+			height: 800px;
+			width: 100%;
+		}
+	</style>
+	<script type="text/javascript">
+		function allowDrop(ev) 
+		{
+		  ev.preventDefault();
+		}
+
+		function drag(ev) 
+		{
+		  ev.dataTransfer.setData("text", ev.target.id);
+		}
+
+		function drop(ev) 
+		{
+			ev.preventDefault();
+			var data=ev.dataTransfer.getData("text");
+			var nodeCopy = document.getElementById(data).childNodes[1].cloneNode(true);
+			ev.target.appendChild(nodeCopy);
+			document.getElementById('code').innerText = document.getElementById('div2').innerHTML;
+		}
+	</script>
+	<script type="text/javascript">
+			function downloadFile(filename, content) {
+				var filename = document.getElementById('filename');
+				var content = document.getElementById('code');
+				const element = document.createElement('a');
+				const blob = new Blob([content], { type: 'plain/text' });
+				const fileUrl = URL.createObjectURL(blob);
+				element.setAttribute('href', fileUrl);
+				element.setAttribute('download', filename);
+				element.style.display = 'none';
+				document.body.appendChild(element);
+				element.click();
+				document.body.removeChild(element);
+			};
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div>
+			<h1>ICONS</h1>
+		</div>
+		<div id="buttonAndInput">
+			<div id="buttonDiv" draggable="true" ondragstart="drag(event)">
+				<button id="button">Click Me</button><br>
+			</div>
+			<div id="inputDiv" draggable="true" ondragstart="drag(event)">
+				<input type="text" name="text" id="text" placeholder="TypeHere...">
+			</div>
+		</div>	
+	</div>
+	<div id="webPage">
+		<div>
+			<h1>Web Page</h1>
+		</div><br>
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+		</div>
+	</div>
+	<div id="div3">
+		<div>
+			<h1>HTML Code</h1>
+		</div>
+		<div id="code"></div>
+		<div>
+			<input id="filename" placeholder="Specify a filename..." />
+			<button id="download" onclick="downloadFile()">Download file</button>
+		</div>
+	</div>
+</body>
+</html>

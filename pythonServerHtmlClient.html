@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Window</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        var ws = new WebSocket("ws://localhost:5656/");
+        ws.onopen = function()
+        {
+            console.log("Connection is Established");
+        };
+        $(document).ready( function() {
+            $('#sendButton').click(function()
+            {
+                ws.send($('#chat').val());
+                ($('#chat').val(""));
+            });
+        });
+        ws.onmessage = function(evt) 
+        {
+            var received_msg = evt.data;
+            document.getElementById('messageReceived').innerHTML += received_msg;
+        };
+    </script>
+</head>
+<body>
+    <p id="messageReceived"></p>
+    <input type="text" name="chat" id="chat">
+    <button id="sendButton" name="sendButton">Send</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Window</title>
+    <script type="text/javascript">
+        var ws = new WebSocket("ws://localhost:8765/");
+
+        ws.onopen = function()
+        {
+            console.log("Connection is Established");
+            ws.send("Message to Send");
+        };
+
+        ws.onmessage = function(evt) 
+        {
+            var received_msg = evt.data;
+            console.log(received_msg);
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Window</title>
+    <script type="text/javascript">
+        connected = document.getElementById("connected");
+        log = document.getElementById("log");
+        chat = document.getElementById("chat");
+        // form = chat.form;
+        state = document.getElementById("status");
+        if (window.WebSocket === undefined)
+        {
+            state.innerHTML = "sockets not supported";
+            state.className = "fail";
+        }
+        else
+        {
+            window.addEventListener("load", onLoad, false);
+        }
+        function onLoad()
+        {
+            var wsUri = "ws://localhost:9976";  
+            websocket = new WebSocket(wsUri);
+            // websocket.send("Hi");
+            websocket.onopen = function(evt) { onOpen(evt) };
+            websocket.onclose = function(evt) { onClose(evt) };
+            websocket.onmessage = function(evt) { onMessage(evt) };
+            websocket.onerror = function(evt) { onError(evt) };
+        }
+        function onOpen(evt)
+        {
+            state.className = "success";
+            state.innerHTML = "Connected to server";    
+        }
+          
+        function onClose(evt)
+        {
+            state.className = "fail";
+            state.innerHTML = "Not connected";
+            connected.innerHTML = "0";  
+        }
+         
+        function onMessage(evt)
+        {
+            var message = evt.data;
+            if (message.startsWith("log:"))
+            {
+                message = message.slice("log:".length);
+                log.innerHTML = '<li class="message">' + message + "</li>" + log.innerHTML; 
+            }
+            else if (message.startsWith("connected:"))
+            {
+                message = message.slice("connected:".length);
+                connected.innerHTML = message;  
+            }    
+        }
+         
+        function onError(evt)
+        { 
+            state.className = "fail";
+            state.innerHTML = "Communication error";
+        }
+        function addMessage()
+        {
+            var message = chat.value;
+            chat.value = "";
+            websocket.send(message);
+        }
+    </script>
+</head>
+<body>
+    <p id="connected"></p>
+    <p id="log"></p>
+    <input type = 'text' id="chat">
+    <p id="status"></p>
+</body>
+</html>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+ 
+        <title>Tuts+ Chat Application</title>
+        <meta name="description" content="Tuts+ Chat Application" />
+        <link rel="stylesheet" href="pythonServerHtmlClient.css" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="menu">
+                <p class="welcome">Welcome, <b></b></p>
+                <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+            </div>
+ 
+            <div id="chatbox"></div>
+ 
+            <form name="message" action="">
+                <input name="usermsg" type="text" id="usermsg" />
+                <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
+            </form>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            // jQuery Document
+            $(document).ready(function () {});
+        </script>
+    </body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+
+<head>
+    <title>Text-to-Speech Example Application</title>
+    <script>
+        /*
+         * This sample code requires a web browser with support for both the
+         * HTML5 and ECMAScript 5 standards; the following is a non-comprehensive
+         * list of compliant browsers and their minimum version:
+         *
+         * - Chrome 23.0+
+         * - Firefox 21.0+
+         * - Internet Explorer 9.0+
+         * - Edge 12.0+
+         * - Opera 15.0+
+         * - Safari 6.1+
+         * - Android (stock web browser) 4.4+
+         * - Chrome for Android 51.0+
+         * - Firefox for Android 48.0+
+         * - Opera Mobile 37.0+
+         * - iOS (Safari Mobile and Chrome) 3.2+
+         * - Internet Explorer Mobile 10.0+
+         * - Blackberry Browser 10.0+
+         */
+
+        // Mapping of the OutputFormat parameter of the SynthesizeSpeech API
+        // and the audio format strings understood by the browser
+        var AUDIO_FORMATS = {
+            'ogg_vorbis': 'audio/ogg',
+            'mp3': 'audio/mpeg',
+            'pcm': 'audio/wave; codecs=1'
+        };
+
+        /**
+         * Handles fetching JSON over HTTP
+         */
+        function fetchJSON(method, url, onSuccess, onError) {
+            var request = new XMLHttpRequest();
+            request.open(method, url, true);
+            request.onload = function () {
+                // If loading is complete
+                if (request.readyState === 4) {
+                    // if the request was successful
+                    if (request.status === 200) {
+                        var data;
+
+                        // Parse the JSON in the response
+                        try {
+                            data = JSON.parse(request.responseText);
+                        } catch (error) {
+                            onError(request.status, error.toString());
+                        }
+
+                        onSuccess(data);
+                    } else {
+                        onError(request.status, request.responseText)
+                    }
+                }
+            };
+
+            request.send();
+        }
+
+        /**
+         * Returns a list of audio formats supported by the browser
+         */
+        function getSupportedAudioFormats(player) {
+            return Object.keys(AUDIO_FORMATS)
+                .filter(function (format) {
+                    var supported = player.canPlayType(AUDIO_FORMATS[format]);
+                    return supported === 'probably' || supported === 'maybe';
+                });
+        }
+
+        // Initialize the application when the DOM is loaded and ready to be
+        // manipulated
+        document.addEventListener("DOMContentLoaded", function () {
+            var input = document.getElementById('input'),
+                voiceMenu = document.getElementById('voice'),
+                text = document.getElementById('text'),
+                player = document.getElementById('player'),
+                submit = document.getElementById('submit'),
+                supportedFormats = getSupportedAudioFormats(player);
+
+            // Display a message and don't allow submitting the form if the
+            // browser doesn't support any of the available audio formats
+            if (supportedFormats.length === 0) {
+                submit.disabled = true;
+                alert('The web browser in use does not support any of the' +
+                      ' available audio formats. Please try with a different' +
+                      ' one.');
+            }
+
+            // Play the audio stream when the form is submitted successfully
+            input.addEventListener('submit', function (event) {
+                // Validate the fields in the form, display a message if
+                // unexpected values are encountered
+                if (voiceMenu.selectedIndex <= 0 || text.value.length === 0) {
+                    alert('Please fill in all the fields.');
+                } else {
+                    var selectedVoice = voiceMenu
+                                            .options[voiceMenu.selectedIndex]
+                                            .value;
+
+                    // Point the player to the streaming server
+                    player.src = '/read?voiceId=' +
+                        encodeURIComponent(selectedVoice) +
+                        '&text=' + encodeURIComponent(text.value) +
+                        '&outputFormat=' + supportedFormats[0];
+                    player.play();
+                }
+
+                // Stop the form from submitting,
+                // Submitting the form is allowed only if the browser doesn't
+                // support Javascript to ensure functionality in such a case
+                event.preventDefault();
+            });
+
+            // Load the list of available voices and display them in a menu
+            fetchJSON('GET', '/voices',
+                // If the request succeeds
+                function (voices) {
+                    var container = document.createDocumentFragment();
+
+                    // Build the list of options for the menu
+                    voices.forEach(function (voice) {
+                        var option = document.createElement('option');
+                        option.value = voice['Id'];
+                        option.innerHTML = voice['Name'] + ' (' +
+                            voice['Gender'] + ', ' +
+                            voice['LanguageName'] + ')';
+                        container.appendChild(option);
+                    });
+
+                    // Add the options to the menu and enable the form field
+                    voiceMenu.appendChild(container);
+                    voiceMenu.disabled = false;
+                },
+                // If the request fails
+                function (status, response) {
+                    // Display a message in case loading data from the server
+                    // fails
+                    alert(status + ' - ' + response);
+                });
+        });
+
+    </script>
+    <style>
+        #input {
+            min-width: 100px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+        }
+
+        #input div {
+            margin-bottom: 20px;
+        }
+
+        #text {
+            width: 100%;
+            height: 200px;
+            display: block;
+        }
+
+        #submit {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="input" method="GET" action="/read">
+        <div>
+            <label for="voice">Select a voice:</label>
+            <select id="voice" name="voiceId" disabled>
+                <option value="">Choose a voice...</option>
+            </select>
+        </div>
+        <div>
+            <label for="text">Text to read:</label>
+            <textarea id="text" maxlength="1000" minlength="1" name="text"
+                    placeholder="Type some text here..."></textarea>
+        </div>
+        <input type="submit" value="Read" id="submit" />
+    </form>
+    <audio id="player"></audio>
+</body>
+
+</html> --> 

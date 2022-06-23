@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+
+	<title>Speech to Text</title>
+</head>
+<body>
+	<button onclick="startListening()">START</button>
+	<p id="para"></p>
+	<div class="words" contenteditable>
+		<p id="p"></p>
+	</div>
+	<script>
+		var speech = true;
+		window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+		const recognition = new SpeechRecognition();
+		recognition.continuous = true;
+		recognition.interimResults = true;
+		const words = document.querySelector('.words');
+		words.appendChild(p);
+
+		recognition.addEventListener('result', e => {
+			const transcript = Array.from(e.results)
+				.map(result => result[0])
+				.map(result => result.transcript)
+				.join('')
+
+			document.getElementById("p").innerHTML = transcript;
+			console.log(transcript);
+		});
+			recognition.start();
+		recognition.onstart = () => {
+		  document.getElementById("para").innerHTML = "Listening...";
+		};
+		recognition.onend = () => {
+		  document.getElementById("para").innerHTML = "";
+		};
+		function startListening()
+		{
+			// document.querySelector("#para").innerHTML = "Listening...";
+			recognition.start();
+			// if (speech == true) {
+			// recognition.start();
+			// recognition.addEventListener('end', recognition.start);
+		// }
+		};
+		function stopListening()
+		{
+			recognition.stop();
+			document.querySelector("#para").innerHTML = "";
+		};
+	</script>
+	<button onclick="stopListening()">STOP</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+
+	<title>Speech to Text</title>
+</head>
+
+<body>
+	<div class="words" contenteditable>
+		<p id="p"></p>
+	</div>
+
+	<script>
+		var speech = true;
+		window.SpeechRecognition = window.SpeechRecognition
+						|| window.webkitSpeechRecognition;
+		const recognition = new SpeechRecognition();
+		recognition.interimResults = true;
+		const words = document.querySelector('.words');
+		words.appendChild(p);
+
+		recognition.addEventListener('result', e => {
+			const transcript = Array.from(e.results)
+				.map(result => result[0])
+				.map(result => result.transcript)
+				.join('')
+
+			document.getElementById("p").innerHTML += transcript;
+			console.log(transcript);
+		});
+		
+		if (speech == true) {
+			recognition.start();
+			recognition.addEventListener('end', recognition.start);
+		}
+	</script>
+</body>
+
+</html> -->
